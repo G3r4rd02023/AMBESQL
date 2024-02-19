@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProyectoAMBE.Data;
 using ProyectoAMBE.Services;
@@ -8,12 +7,12 @@ namespace ProyectoAMBE.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InsitutosController : ControllerBase
+    public class InstitutosController : ControllerBase
     {
         private readonly TransportedbContext _context;
         private readonly IServicioBitacora _bitacora;
 
-        public InsitutosController(TransportedbContext context, IServicioBitacora bitacora)
+        public InstitutosController(TransportedbContext context, IServicioBitacora bitacora)
         {
             _context = context;
             _bitacora = bitacora;
