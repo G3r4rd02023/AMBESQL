@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProyectoAMBE.Data;
 using ProyectoAMBE.Models;
 using ProyectoAMBE.Services;
@@ -32,5 +33,39 @@ namespace ProyectoAMBE.Controllers
             return Ok();
         }
 
+        // GET: api/Usuarios
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Usuarios>>> ObtenerUsuarios()
+        {
+            
+            if (_context.Usuarios == null)
+            {
+                return NotFound();
+            }
+            
+            var usuarios = await _context.Usuarios.ToListAsync();
+            //await _bitacora.AgregarRegistro("Consultó", "Institutos");
+            //devuelve la lista de todos los institutos
+            return Ok(usuarios);
+        }
+
+       
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Usuarios>> BuscarUsuario(int id)
+        {
+            
+            if (_context.Usuarios == null)
+            {
+                return NotFound();
+            }           
+            var usuario = await _context.Usuarios.FindAsync(id);            
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+            //await _bitacora.AgregarRegistro("Consultó", "Institutos");
+            //devuelve el instituto encontrado
+            return Ok(usuario);
+        }
     }
 }
