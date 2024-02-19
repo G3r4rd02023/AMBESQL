@@ -2,8 +2,7 @@
 {
     public class PersonaViewModel
     {
-        public int IdPersona { get; set; }
-
+        
         public int IdTipoPersona { get; set; }
 
         public int IdInstituto { get; set; }
@@ -16,7 +15,7 @@
 
         public string? SegundoApellido { get; set; }
 
-        public DateOnly? FechaNacimiento { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
 
         public string? Genero { get; set; }
 

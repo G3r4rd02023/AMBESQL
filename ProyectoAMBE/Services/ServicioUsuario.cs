@@ -29,9 +29,12 @@ namespace ProyectoAMBE.Services
                 ModificadoPor = model.ModificadoPor
             };
 
+            await _context.Personas.AddAsync(nuevaPersona);
+            await _context.SaveChangesAsync();
+
             var nuevoUsuario = new Usuarios
             {
-                IdPersona = model.IdPersona,
+                IdPersona = nuevaPersona.IdPersona,
                 Usuario = model.Usuario,
                 IdInstituto = model.IdInstituto,
                 NombreUsuario = model.NombreUsuario,
@@ -44,10 +47,10 @@ namespace ProyectoAMBE.Services
                 ModificadoPor = model.ModificadoPor
 
             };
-            await _context.Personas.AddAsync(nuevaPersona);
+            
             //await _context.Usuarios.AddAsync(nuevoUsuario);
 
-            await _context.SaveChangesAsync();
+            
 
             return nuevoUsuario;
 
