@@ -29,5 +29,14 @@ namespace ProyectoAMBE.Controllers
             //devuelve la lista de todos los registros
             return Ok(bitacora);
         }
+
+                
+        [HttpPost]
+        public async Task<ActionResult<Bitacora>> AgregarRegistro(Bitacora bitacora)
+        {            
+            await _context.Bitacora.AddAsync(bitacora);          
+            await _context.SaveChangesAsync();            
+            return Ok();
+        }
     }
 }

@@ -69,7 +69,7 @@ namespace ProyectoAMBE.Controllers
             _context.Entry(institutos).State = EntityState.Modified;
             //guarda los cambios en bd           
             await _context.SaveChangesAsync();
-            await _bitacora.AgregarRegistro("Actualizó", "Institutos");
+            //await _bitacora.AgregarRegistro("Actualizó", "Institutos");
             return Ok();
         }
 
@@ -105,7 +105,7 @@ namespace ProyectoAMBE.Controllers
             _context.Institutos.Remove(instituto);
             //guardar los cambios
             await _context.SaveChangesAsync();
-            await _bitacora.AgregarRegistro("Eliminó", "Institutos");
+            //await _bitacora.AgregarRegistro("Eliminó", "Institutos");
             return Ok();
         }
 

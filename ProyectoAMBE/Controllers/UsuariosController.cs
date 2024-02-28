@@ -67,5 +67,19 @@ namespace ProyectoAMBE.Controllers
             //devuelve el instituto encontrado
             return Ok(usuario);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditarUsuarios(int id, Usuarios usuario)
+        {
+            if (id != usuario.IdUsuario)
+            {
+                return BadRequest();
+            }
+            //actualizar
+            _context.Entry(usuario).State = EntityState.Modified;
+            //guarda los cambios en bd           
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
     }
 }

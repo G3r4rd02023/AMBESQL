@@ -29,7 +29,7 @@ namespace ProyectoAMBE.Controllers
             }
             //obtiene la lista 
             var objeto = await _context.Objetos.ToListAsync();
-            await _bitacora.AgregarRegistro("Consultó", "Objetos");
+            //await _bitacora.AgregarRegistro("Consultó", "Objetos");
             //devuelve la lista 
             return Ok(objeto);
         }
@@ -41,7 +41,7 @@ namespace ProyectoAMBE.Controllers
             await _context.Objetos.AddAsync(objeto);
             //guarda los cambios
             await _context.SaveChangesAsync();
-            await _bitacora.AgregarRegistro("Creó", "Objetos");
+            //await _bitacora.AgregarRegistro("Creó", "Objetos");
             return Ok();
         }
     }

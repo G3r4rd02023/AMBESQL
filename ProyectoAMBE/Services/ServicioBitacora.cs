@@ -11,14 +11,14 @@ namespace ProyectoAMBE.Services
             _context = context;
         }
 
-        public async Task<Bitacora> AgregarRegistro(string tipoAccion, string tabla)
+        public async Task<Bitacora> AgregarRegistro(int idUsuario, int idInstituto,string tipoAccion, string tabla)
         {
             Bitacora bitacora = new()
             {
-                IdInstituto = 1,
+                IdInstituto = idInstituto,
                 TipoAccion = tipoAccion,
                 Tabla = tabla,
-                IdUsuario = 1,
+                IdUsuario = idUsuario,
                 Fecha = DateTime.Now,
             };
             _context.Bitacora.Add(bitacora);

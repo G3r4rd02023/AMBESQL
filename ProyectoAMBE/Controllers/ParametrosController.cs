@@ -28,7 +28,7 @@ namespace ProyectoAMBE.Controllers
             }
             //obtiene la lista 
             var parametro = await _context.Parametros.ToListAsync();
-            await _bitacora.AgregarRegistro("Consultó", "Parametros");
+            //await _bitacora.AgregarRegistro("Consultó", "Parametros");
             //devuelve la lista 
             return Ok(parametro);
         }
@@ -44,7 +44,7 @@ namespace ProyectoAMBE.Controllers
             _context.Entry(parametro).State = EntityState.Modified;
             //guarda los cambios en bd           
             await _context.SaveChangesAsync();
-            await _bitacora.AgregarRegistro("Actualizó", "Parametros");
+            //await _bitacora.AgregarRegistro("Actualizó", "Parametros");
             return Ok();
         }
 
@@ -55,7 +55,7 @@ namespace ProyectoAMBE.Controllers
             await _context.Parametros.AddAsync(parametro);
             //guarda los cambios
             await _context.SaveChangesAsync();
-            await _bitacora.AgregarRegistro("Creó", "Parametros");
+            //await _bitacora.AgregarRegistro("Creó", "Parametros");
             return Ok();
         }
     }

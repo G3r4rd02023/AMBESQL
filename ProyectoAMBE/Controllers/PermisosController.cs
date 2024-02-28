@@ -29,7 +29,7 @@ namespace ProyectoAMBE.Controllers
             }
             //obtiene la lista 
             var permisos = await _context.Permisos.ToListAsync();
-            await _bitacora.AgregarRegistro("Consultó", "Permisos");
+            //await _bitacora.AgregarRegistro("Consultó", "Permisos");
             //devuelve la lista 
             return Ok(permisos);
         }
@@ -41,7 +41,7 @@ namespace ProyectoAMBE.Controllers
             await _context.Permisos.AddAsync(permiso);
             //guarda los cambios
             await _context.SaveChangesAsync();
-            await _bitacora.AgregarRegistro("Creó", "Permisos");
+            //await _bitacora.AgregarRegistro("Creó", "Permisos");
             return Ok();
         }
 
@@ -56,7 +56,7 @@ namespace ProyectoAMBE.Controllers
             _context.Entry(permiso).State = EntityState.Modified;
             //guarda los cambios en bd           
             await _context.SaveChangesAsync();
-            await _bitacora.AgregarRegistro("Actualizó", "Permisos");
+            //await _bitacora.AgregarRegistro("Actualizó", "Permisos");
             return Ok();
         }
     }
