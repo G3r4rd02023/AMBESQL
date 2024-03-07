@@ -43,7 +43,9 @@ namespace ProyectoAMBE.Controllers
                 return NotFound();
             }
 
-            var usuarios = await _context.Usuarios.ToListAsync();
+            var usuarios = await _context.Usuarios
+                .Where(u => u.Estado == "Nuevo")
+                .ToListAsync();
             //await _bitacora.AgregarRegistro("Consultó", "Institutos");
             //devuelve la lista de todos los institutos
             return Ok(usuarios);
