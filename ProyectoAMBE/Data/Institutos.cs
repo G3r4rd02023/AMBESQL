@@ -29,6 +29,10 @@ public partial class Institutos
 
     //public virtual ICollection<Bitacora> Bitacora { get; set; } = new List<Bitacora>();
 
+    //public virtual ICollection<InstitutoRoles> InstitutoRoles { get; set; } = new List<InstitutoRoles>();
+
+    //public virtual ICollection<InstitutoUsuarios> InstitutoUsuarios { get; set; } = new List<InstitutoUsuarios>();
+
     //public virtual ICollection<Objetos> Objetos { get; set; } = new List<Objetos>();
 
     //public virtual ICollection<Permisos> Permisos { get; set; } = new List<Permisos>();
@@ -40,8 +44,4 @@ public partial class Institutos
     //public virtual ICollection<TipoPersonas> TipoPersonas { get; set; } = new List<TipoPersonas>();
 
     //public virtual ICollection<Usuarios> Usuarios { get; set; } = new List<Usuarios>();
-
-    //public virtual ICollection<Roles> IdRol { get; set; } = new List<Roles>();
-
-    //public virtual ICollection<Usuarios> IdUsuario { get; set; } = new List<Usuarios>();
 }

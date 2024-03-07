@@ -9,10 +9,10 @@ namespace ProyectoAMBE.Controllers
     [ApiController]
     public class ParametrosController : ControllerBase
     {
-        private readonly TransportedbContext _context;
+        private readonly AmbedbContext _context;
         private readonly IServicioBitacora _bitacora;
 
-        public ParametrosController(TransportedbContext context, IServicioBitacora bitacora)
+        public ParametrosController(AmbedbContext context, IServicioBitacora bitacora)
         {
             _context = context;
             _bitacora = bitacora;

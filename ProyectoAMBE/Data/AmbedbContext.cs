@@ -1,21 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace ProyectoAMBE.Data;
 
-public partial class TransportedbContext : DbContext
+public partial class AmbedbContext : DbContext
 {
-    public TransportedbContext()
+    public AmbedbContext()
     {
     }
 
-    public TransportedbContext(DbContextOptions<TransportedbContext> options)
+    public AmbedbContext(DbContextOptions<AmbedbContext> options)
         : base(options)
     {
     }
 
     public virtual DbSet<Bitacora> Bitacora { get; set; }
+
+    public virtual DbSet<InstitutoRoles> InstitutoRoles { get; set; }
+
+    public virtual DbSet<InstitutoUsuarios> InstitutoUsuarios { get; set; }
 
     public virtual DbSet<Institutos> Institutos { get; set; }
 
@@ -34,14 +36,13 @@ public partial class TransportedbContext : DbContext
     public virtual DbSet<Usuarios> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-
         => optionsBuilder.UseSqlServer();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Bitacora>(entity =>
         {
-            entity.HasKey(e => e.IdBitacora).HasName("PK__BITACORA__44E70BF37E33F19B");
+            entity.HasKey(e => e.IdBitacora).HasName("PK__BITACORA__44E70BF3E55560D2");
 
             entity.ToTable("BITACORA");
 
@@ -72,9 +73,51 @@ public partial class TransportedbContext : DbContext
             //    .HasConstraintName("FK__BITACORA__ID_USU__5165187F");
         });
 
+        modelBuilder.Entity<InstitutoRoles>(entity =>
+        {
+            entity.HasKey(e => e.IdInstitutoRol).HasName("PK__INSTITUT__F48D85DCA89AB471");
+
+            entity.ToTable("INSTITUTO_ROLES");
+
+            entity.Property(e => e.IdInstitutoRol).HasColumnName("ID_INSTITUTO_ROL");
+            entity.Property(e => e.IdInstituto).HasColumnName("ID_INSTITUTO");
+            entity.Property(e => e.IdRol).HasColumnName("ID_ROL");
+
+            //entity.HasOne(d => d.IdInstitutoNavigation).WithMany(p => p.InstitutoRoles)
+            //    .HasForeignKey(d => d.IdInstituto)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__INSTITUTO__ID_IN__6754599E");
+
+            //entity.HasOne(d => d.IdRolNavigation).WithMany(p => p.InstitutoRoles)
+            //    .HasForeignKey(d => d.IdRol)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__INSTITUTO__ID_RO__68487DD7");
+        });
+
+        modelBuilder.Entity<InstitutoUsuarios>(entity =>
+        {
+            entity.HasKey(e => e.IdInstitutoUsuario).HasName("PK__INSTITUT__74FAE9E1B152300B");
+
+            entity.ToTable("INSTITUTO_USUARIOS");
+
+            entity.Property(e => e.IdInstitutoUsuario).HasColumnName("ID_INSTITUTO_USUARIO");
+            entity.Property(e => e.IdInstituto).HasColumnName("ID_INSTITUTO");
+            entity.Property(e => e.IdUsuario).HasColumnName("ID_USUARIO");
+
+            //entity.HasOne(d => d.IdInstitutoNavigation).WithMany(p => p.InstitutoUsuarios)
+            //    .HasForeignKey(d => d.IdInstituto)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__INSTITUTO__ID_IN__60A75C0F");
+
+            //entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.InstitutoUsuarios)
+            //    .HasForeignKey(d => d.IdUsuario)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__INSTITUTO__ID_US__619B8048");
+        });
+
         modelBuilder.Entity<Institutos>(entity =>
         {
-            entity.HasKey(e => e.IdInstituto).HasName("PK__INSTITUT__E031A83A8B88E0A8");
+            entity.HasKey(e => e.IdInstituto).HasName("PK__INSTITUT__E031A83A11780ADE");
 
             entity.ToTable("INSTITUTOS");
 
@@ -119,49 +162,11 @@ public partial class TransportedbContext : DbContext
                 .HasMaxLength(15)
                 .IsUnicode(false)
                 .HasColumnName("TELEFONO");
-
-            //entity.HasMany(d => d.IdRol).WithMany(p => p.IdInstitutoNavigation)
-            //    .UsingEntity<Dictionary<string, object>>(
-            //        "InstitutoRoles",
-            //        r => r.HasOne<Roles>().WithMany()
-            //            .HasForeignKey("IdRol")
-            //            .OnDelete(DeleteBehavior.ClientSetNull)
-            //            .HasConstraintName("FK__INSTITUTO__ID_RO__68487DD7"),
-            //        l => l.HasOne<Institutos>().WithMany()
-            //            .HasForeignKey("IdInstituto")
-            //            .OnDelete(DeleteBehavior.ClientSetNull)
-            //            .HasConstraintName("FK__INSTITUTO__ID_IN__6754599E"),
-            //        j =>
-            //        {
-            //            j.HasKey("IdInstituto", "IdRol").HasName("PK__INSTITUT__723218CC26D38021");
-            //            j.ToTable("INSTITUTO_ROLES");
-            //            j.IndexerProperty<int>("IdInstituto").HasColumnName("ID_INSTITUTO");
-            //            j.IndexerProperty<int>("IdRol").HasColumnName("ID_ROL");
-            //        });
-
-            //entity.HasMany(d => d.IdUsuario).WithMany(p => p.IdInstitutoNavigation)
-            //    .UsingEntity<Dictionary<string, object>>(
-            //        "InstitutoUsuarios",
-            //        r => r.HasOne<Usuarios>().WithMany()
-            //            .HasForeignKey("IdUsuario")
-            //            .OnDelete(DeleteBehavior.ClientSetNull)
-            //            .HasConstraintName("FK__INSTITUTO__ID_US__619B8048"),
-            //        l => l.HasOne<Institutos>().WithMany()
-            //            .HasForeignKey("IdInstituto")
-            //            .OnDelete(DeleteBehavior.ClientSetNull)
-            //            .HasConstraintName("FK__INSTITUTO__ID_IN__60A75C0F"),
-            //        j =>
-            //        {
-            //            j.HasKey("IdInstituto", "IdUsuario").HasName("PK__INSTITUT__F9209E8305977FF4");
-            //            j.ToTable("INSTITUTO_USUARIOS");
-            //            j.IndexerProperty<int>("IdInstituto").HasColumnName("ID_INSTITUTO");
-            //            j.IndexerProperty<int>("IdUsuario").HasColumnName("ID_USUARIO");
-            //        });
         });
 
         modelBuilder.Entity<Objetos>(entity =>
         {
-            entity.HasKey(e => e.IdObjeto).HasName("PK__OBJETOS__6F0599678F8C9B6A");
+            entity.HasKey(e => e.IdObjeto).HasName("PK__OBJETOS__6F0599673335FDC3");
 
             entity.ToTable("OBJETOS");
 
@@ -202,7 +207,7 @@ public partial class TransportedbContext : DbContext
 
         modelBuilder.Entity<Parametros>(entity =>
         {
-            entity.HasKey(e => e.IdParametro).HasName("PK__PARAMETR__79032FF56069A2B0");
+            entity.HasKey(e => e.IdParametro).HasName("PK__PARAMETR__79032FF56F779CB9");
 
             entity.ToTable("PARAMETROS");
 
@@ -225,7 +230,7 @@ public partial class TransportedbContext : DbContext
 
         modelBuilder.Entity<Permisos>(entity =>
         {
-            entity.HasKey(e => e.IdPermiso).HasName("PK__PERMISOS__AC74EBF6599FB0D1");
+            entity.HasKey(e => e.IdPermiso).HasName("PK__PERMISOS__AC74EBF6D7F3647B");
 
             entity.ToTable("PERMISOS");
 
@@ -268,7 +273,7 @@ public partial class TransportedbContext : DbContext
 
         modelBuilder.Entity<Personas>(entity =>
         {
-            entity.HasKey(e => e.IdPersona).HasName("PK__PERSONAS__78244149D07B5007");
+            entity.HasKey(e => e.IdPersona).HasName("PK__PERSONAS__78244149A2CB5E92");
 
             entity.ToTable("PERSONAS");
 
@@ -330,7 +335,7 @@ public partial class TransportedbContext : DbContext
 
         modelBuilder.Entity<Roles>(entity =>
         {
-            entity.HasKey(e => e.IdRol).HasName("PK__ROLES__203B0F6856B1EE17");
+            entity.HasKey(e => e.IdRol).HasName("PK__ROLES__203B0F68D2C5EC61");
 
             entity.ToTable("ROLES");
 
@@ -357,14 +362,14 @@ public partial class TransportedbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("MODIFICADO_POR");
 
-            //entity.HasOne(d => d.IdInstituto1).WithMany(p => p.Roles)
+            //entity.HasOne(d => d.IdInstitutoNavigation).WithMany(p => p.Roles)
             //    .HasForeignKey(d => d.IdInstituto)
             //    .HasConstraintName("FK__ROLES__ID_INSTIT__46E78A0C");
         });
 
         modelBuilder.Entity<TipoPersonas>(entity =>
         {
-            entity.HasKey(e => e.IdTipoPersona).HasName("PK__TIPO_PER__E007574AFA2670AD");
+            entity.HasKey(e => e.IdTipoPersona).HasName("PK__TIPO_PER__E007574A71D77A60");
 
             entity.ToTable("TIPO_PERSONAS");
 
@@ -407,7 +412,7 @@ public partial class TransportedbContext : DbContext
 
         modelBuilder.Entity<Usuarios>(entity =>
         {
-            entity.HasKey(e => e.IdUsuario).HasName("PK__USUARIOS__91136B90E64DBC12");
+            entity.HasKey(e => e.IdUsuario).HasName("PK__USUARIOS__91136B90BDB3BB42");
 
             entity.ToTable("USUARIOS");
 
@@ -455,7 +460,7 @@ public partial class TransportedbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("USUARIO");
 
-            //entity.HasOne(d => d.IdInstituto1).WithMany(p => p.Usuarios)
+            //entity.HasOne(d => d.IdInstitutoNavigation).WithMany(p => p.Usuarios)
             //    .HasForeignKey(d => d.IdInstituto)
             //    .HasConstraintName("FK__USUARIOS__ID_INS__4CA06362");
 

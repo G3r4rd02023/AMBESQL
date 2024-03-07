@@ -6,9 +6,9 @@ namespace ProyectoAMBE.Services
     public class ServicioUsuario : IServicioUsuario
     {
 
-        private readonly TransportedbContext _context;
+        private readonly AmbedbContext _context;
 
-        public ServicioUsuario(TransportedbContext context)
+        public ServicioUsuario(AmbedbContext context)
         {
             _context = context;
         }
@@ -47,10 +47,10 @@ namespace ProyectoAMBE.Services
                 ModificadoPor = model.ModificadoPor
 
             };
-            
+
             //await _context.Usuarios.AddAsync(nuevoUsuario);
 
-            
+
 
             return nuevoUsuario;
 

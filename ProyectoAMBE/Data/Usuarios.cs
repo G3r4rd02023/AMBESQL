@@ -35,13 +35,13 @@ public partial class Usuarios
 
     //public virtual ICollection<Bitacora> Bitacora { get; set; } = new List<Bitacora>();
 
-    //public virtual Institutos? IdInstituto1 { get; set; }
+    //public virtual Institutos? IdInstitutoNavigation { get; set; }
 
     //public virtual Personas? IdPersonaNavigation { get; set; }
 
     //public virtual Roles? IdRolNavigation { get; set; }
 
-    //public virtual ICollection<Parametros> Parametros { get; set; } = new List<Parametros>();
+    //public virtual ICollection<InstitutoUsuarios> InstitutoUsuarios { get; set; } = new List<InstitutoUsuarios>();
 
-    //public virtual ICollection<Institutos> IdInstitutoNavigation { get; set; } = new List<Institutos>();
+    //public virtual ICollection<Parametros> Parametros { get; set; } = new List<Parametros>();
 }

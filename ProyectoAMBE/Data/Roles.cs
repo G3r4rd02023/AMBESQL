@@ -19,11 +19,11 @@ public partial class Roles
 
     public DateTime? FechaModificacion { get; set; }
 
-    //public virtual Institutos? IdInstituto1 { get; set; }
+    //public virtual Institutos? IdInstitutoNavigation { get; set; }
+
+    //public virtual ICollection<InstitutoRoles> InstitutoRoles { get; set; } = new List<InstitutoRoles>();
 
     //public virtual ICollection<Permisos> Permisos { get; set; } = new List<Permisos>();
 
     //public virtual ICollection<Usuarios> Usuarios { get; set; } = new List<Usuarios>();
-
-    //public virtual ICollection<Institutos> IdInstitutoNavigation { get; set; } = new List<Institutos>();
 }

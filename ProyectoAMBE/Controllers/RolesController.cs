@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProyectoAMBE.Data;
 
@@ -9,9 +8,9 @@ namespace ProyectoAMBE.Controllers
     [ApiController]
     public class RolesController : ControllerBase
     {
-        private readonly TransportedbContext _context;
+        private readonly AmbedbContext _context;
 
-        public RolesController(TransportedbContext context)
+        public RolesController(AmbedbContext context)
         {
             _context = context;
         }

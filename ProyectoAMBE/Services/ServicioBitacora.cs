@@ -4,14 +4,14 @@ namespace ProyectoAMBE.Services
 {
     public class ServicioBitacora : IServicioBitacora
     {
-        private readonly TransportedbContext _context;
+        private readonly AmbedbContext _context;
 
-        public ServicioBitacora(TransportedbContext context)
+        public ServicioBitacora(AmbedbContext context)
         {
             _context = context;
         }
 
-        public async Task<Bitacora> AgregarRegistro(int idUsuario, int idInstituto,string tipoAccion, string tabla)
+        public async Task<Bitacora> AgregarRegistro(int idUsuario, int idInstituto, string tipoAccion, string tabla)
         {
             Bitacora bitacora = new()
             {

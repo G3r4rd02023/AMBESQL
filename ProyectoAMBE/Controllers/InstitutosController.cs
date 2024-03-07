@@ -9,10 +9,10 @@ namespace ProyectoAMBE.Controllers
     [ApiController]
     public class InstitutosController : ControllerBase
     {
-        private readonly TransportedbContext _context;
+        private readonly AmbedbContext _context;
         private readonly IServicioBitacora _bitacora;
 
-        public InstitutosController(TransportedbContext context, IServicioBitacora bitacora)
+        public InstitutosController(AmbedbContext context, IServicioBitacora bitacora)
         {
             _context = context;
             _bitacora = bitacora;
@@ -73,15 +73,12 @@ namespace ProyectoAMBE.Controllers
             return Ok();
         }
 
-        // POST: api/Institutos        
+               
         [HttpPost]
-        public async Task<ActionResult<Institutos>> CrearInstitutos(Institutos institutos)
-        {
-            //agrega el nuevo instituto a la bd
-            await _context.Institutos.AddAsync(institutos);
-            //guarda los cambios
-            await _context.SaveChangesAsync();
-            //await _bitacora.AgregarRegistro("Creó", "Institutos");
+        public async Task<ActionResult<Institutos>> CrearInstitutos(Institutos instituto)
+        {           
+            await _context.Institutos.AddAsync(instituto);            
+            await _context.SaveChangesAsync();            
             return Ok();
         }
 

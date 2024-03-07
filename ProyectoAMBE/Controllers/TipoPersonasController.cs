@@ -9,9 +9,9 @@ namespace ProyectoAMBE.Controllers
     [ApiController]
     public class TipoPersonasController : ControllerBase
     {
-        private readonly TransportedbContext _context;
+        private readonly AmbedbContext _context;
 
-        public TipoPersonasController(TransportedbContext context)
+        public TipoPersonasController(AmbedbContext context)
         {
             _context = context;
         }

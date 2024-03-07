@@ -17,7 +17,7 @@ namespace ProyectoAMBE
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddDbContext<TransportedbContext>(o =>
+            builder.Services.AddDbContext<AmbedbContext>(o =>
             {
                 o.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSQL"));
             });
