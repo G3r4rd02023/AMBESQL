@@ -6,5 +6,8 @@ namespace ProyectoAMBE.Services
     public interface IServicioUsuario
     {
         Task<Usuarios> CrearUsuario(PersonaViewModel model);
+
+        Task<Roles> CrearRol(Roles roles);
+       
     }
 }

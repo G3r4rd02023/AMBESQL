@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProyectoAMBE.Data;
+using ProyectoAMBE.Services;
 
 namespace ProyectoAMBE.Controllers
 {
@@ -9,10 +10,12 @@ namespace ProyectoAMBE.Controllers
     public class RolesController : ControllerBase
     {
         private readonly AmbedbContext _context;
+        private readonly IServicioUsuario _servicioUsuario;
 
-        public RolesController(AmbedbContext context)
+        public RolesController(AmbedbContext context,IServicioUsuario servicioUsuario)
         {
             _context = context;
+            _servicioUsuario = servicioUsuario;
         }
 
         [HttpGet]
@@ -31,12 +34,8 @@ namespace ProyectoAMBE.Controllers
 
         [HttpPost]
         public async Task<ActionResult<Roles>> CrearRoles(Roles roles)
-        {
-            //agrega el nuevo instituto a la bd
-            await _context.Roles.AddAsync(roles);
-            //guarda los cambios
-            await _context.SaveChangesAsync();
-
+        {            
+            await _servicioUsuario.CrearRol(roles);           
             return Ok();
         }
 

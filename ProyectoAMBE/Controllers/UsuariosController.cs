@@ -25,11 +25,7 @@ namespace ProyectoAMBE.Controllers
         [HttpPost]
         public async Task<ActionResult<Usuarios>> CrearUsuario(PersonaViewModel model)
         {
-
-            var usuarioNuevo = await _servicioUsuario.CrearUsuario(model);
-            await _context.Usuarios.AddAsync(usuarioNuevo);
-            await _context.SaveChangesAsync();
-            //await _bitacora.AgregarRegistro("Creó", "Usuarios");
+            await _servicioUsuario.CrearUsuario(model);                   
             return Ok();
         }
 
@@ -45,9 +41,7 @@ namespace ProyectoAMBE.Controllers
 
             var usuarios = await _context.Usuarios
                 .Where(u => u.Estado == "Nuevo")
-                .ToListAsync();
-            //await _bitacora.AgregarRegistro("Consultó", "Institutos");
-            //devuelve la lista de todos los institutos
+                .ToListAsync();           
             return Ok(usuarios);
         }
 

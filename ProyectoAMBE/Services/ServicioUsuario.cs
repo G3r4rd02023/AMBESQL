@@ -12,6 +12,33 @@ namespace ProyectoAMBE.Services
         {
             _context = context;
         }
+
+        public async Task<Roles> CrearRol(Roles rol)
+        {           
+            var nuevoRol = new Roles
+            {
+                IdInstituto = rol.IdInstituto,
+                Descripcion = rol.Descripcion,
+                CreadoPor = rol.CreadoPor,
+                FechaCreacion = rol.FechaCreacion,
+                ModificadoPor = rol.ModificadoPor,
+                FechaModificacion = rol.FechaModificacion,
+            };
+
+            await _context.Roles.AddAsync(nuevoRol);
+            await _context.SaveChangesAsync();
+
+            var nuevoInstitutoRol = new InstitutoRoles
+            {
+                IdInstituto = rol.IdInstituto,
+                IdRol = nuevoRol.IdRol,
+            };
+            await _context.InstitutoRoles.AddAsync(nuevoInstitutoRol);
+            await _context.SaveChangesAsync();
+
+            return nuevoRol;
+        }
+
         public async Task<Usuarios> CrearUsuario(PersonaViewModel model)
         {
             var nuevaPersona = new Personas
@@ -31,7 +58,7 @@ namespace ProyectoAMBE.Services
 
             await _context.Personas.AddAsync(nuevaPersona);
             await _context.SaveChangesAsync();
-
+         
             var nuevoUsuario = new Usuarios
             {
                 IdPersona = nuevaPersona.IdPersona,
@@ -48,9 +75,17 @@ namespace ProyectoAMBE.Services
 
             };
 
-            //await _context.Usuarios.AddAsync(nuevoUsuario);
+            await _context.Usuarios.AddAsync(nuevoUsuario);
+            await _context.SaveChangesAsync();
 
+            var nuevoUserInstituto = new InstitutoUsuarios
+            {
+                IdInstituto = model.IdInstituto,
+                IdUsuario = nuevoUsuario.IdUsuario,
+            };
 
+            await _context.InstitutoUsuarios.AddAsync(nuevoUserInstituto);
+            await _context.SaveChangesAsync();
 
             return nuevoUsuario;
 
