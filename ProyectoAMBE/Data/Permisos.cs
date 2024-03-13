@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ProyectoAMBE.Data;
+﻿namespace ProyectoAMBE.Data;
 
 public partial class Permisos
 {
@@ -13,17 +10,17 @@ public partial class Permisos
 
     public int IdInstituto { get; set; }
 
-    public string? Permiso { get; set; }
+    public string Permiso { get; set; }
 
-    public DateTime? FechaCreacion { get; set; }
+    public DateTime FechaCreacion { get; set; }
 
-    public string? ModificadoPor { get; set; }
+    public string ModificadoPor { get; set; }
 
-    public DateTime? FechaModificacion { get; set; }
+    public DateTime FechaModificacion { get; set; }
 
-    //public virtual Institutos IdInstitutoNavigation { get; set; } = null!;
+    //public virtual Institutos IdInstitutoNavigation { get; set; }
 
-    //public virtual Objetos IdObjetoNavigation { get; set; } = null!;
+    //public virtual Objetos IdObjetoNavigation { get; set; }
 
-    //public virtual Roles IdRolNavigation { get; set; } = null!;
+    //public virtual Roles IdRolNavigation { get; set; }
 }

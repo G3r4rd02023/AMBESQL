@@ -14,7 +14,7 @@ namespace ProyectoAMBE.Services
         }
 
         public async Task<Roles> CrearRol(Roles rol)
-        {           
+        {
             var nuevoRol = new Roles
             {
                 IdInstituto = rol.IdInstituto,
@@ -58,7 +58,7 @@ namespace ProyectoAMBE.Services
 
             await _context.Personas.AddAsync(nuevaPersona);
             await _context.SaveChangesAsync();
-         
+
             var nuevoUsuario = new Usuarios
             {
                 IdPersona = nuevaPersona.IdPersona,

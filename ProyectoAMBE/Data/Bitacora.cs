@@ -11,13 +11,13 @@ public partial class Bitacora
 
     public int IdInstituto { get; set; }
 
-    public string? TipoAccion { get; set; }
+    public string TipoAccion { get; set; }
 
-    public string? Tabla { get; set; }
+    public string Tabla { get; set; }
 
-    public DateTime? Fecha { get; set; }
+    public DateTime Fecha { get; set; }
 
-    //public virtual Institutos IdInstitutoNavigation { get; set; } = null!;
+    //public virtual Institutos IdInstitutoNavigation { get; set; }
 
-    //public virtual Usuarios IdUsuarioNavigation { get; set; } = null!;
+    //public virtual Usuarios IdUsuarioNavigation { get; set; }
 }

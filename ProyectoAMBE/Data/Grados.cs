@@ -1,16 +1,14 @@
 ﻿namespace ProyectoAMBE.Data;
 
-public partial class Objetos
+public partial class Grados
 {
-    public int IdObjeto { get; set; }
+    public int IdGrado { get; set; }
 
     public int IdInstituto { get; set; }
 
-    public string Objeto { get; set; }
+    public string Grado { get; set; }
 
-    public string Descripcion { get; set; }
-
-    public string TipoObjeto { get; set; }
+    public string Estado { get; set; }
 
     public string CreadoPor { get; set; }
 
@@ -22,5 +20,5 @@ public partial class Objetos
 
     //public virtual Institutos IdInstitutoNavigation { get; set; }
 
-    //public virtual ICollection<Permisos> Permisos { get; set; } = new List<Permisos>();
+    //public virtual ICollection<Secciones> Secciones { get; set; } = new List<Secciones>();
 }

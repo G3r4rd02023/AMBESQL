@@ -17,13 +17,10 @@ namespace ProyectoAMBE.Controllers
             _context = context;
             _bitacora = bitacora;
         }
-
-
-        // GET: api/Institutos
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Institutos>>> ObtenerInstitutos()
-        {
-            //valida que exista la tabla institutos
+        {            
             if (_context.Institutos == null)
             {
                 return NotFound();
@@ -73,12 +70,12 @@ namespace ProyectoAMBE.Controllers
             return Ok();
         }
 
-               
+
         [HttpPost]
         public async Task<ActionResult<Institutos>> CrearInstitutos(Institutos instituto)
-        {           
-            await _context.Institutos.AddAsync(instituto);            
-            await _context.SaveChangesAsync();            
+        {
+            await _context.Institutos.AddAsync(instituto);
+            await _context.SaveChangesAsync();
             return Ok();
         }
 

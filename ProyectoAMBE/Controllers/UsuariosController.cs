@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProyectoAMBE.Data;
 using ProyectoAMBE.Models;
@@ -25,7 +24,7 @@ namespace ProyectoAMBE.Controllers
         [HttpPost]
         public async Task<ActionResult<Usuarios>> CrearUsuario(PersonaViewModel model)
         {
-            await _servicioUsuario.CrearUsuario(model);                   
+            await _servicioUsuario.CrearUsuario(model);
             return Ok();
         }
 
@@ -41,7 +40,7 @@ namespace ProyectoAMBE.Controllers
 
             var usuarios = await _context.Usuarios
                 .Where(u => u.Estado == "Nuevo")
-                .ToListAsync();           
+                .ToListAsync();
             return Ok(usuarios);
         }
 

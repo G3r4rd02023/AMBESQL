@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProyectoAMBE.Data;
 using ProyectoAMBE.Services;
@@ -28,7 +27,8 @@ namespace ProyectoAMBE.Controllers
                 return NotFound();
             }
             //obtiene la lista 
-            var objeto = await _context.Objetos.ToListAsync();
+            var objeto = await _context.Objetos
+                .ToListAsync();
             //await _bitacora.AgregarRegistro("Consultó", "Objetos");
             //devuelve la lista 
             return Ok(objeto);

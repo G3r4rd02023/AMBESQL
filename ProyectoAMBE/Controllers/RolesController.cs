@@ -12,7 +12,7 @@ namespace ProyectoAMBE.Controllers
         private readonly AmbedbContext _context;
         private readonly IServicioUsuario _servicioUsuario;
 
-        public RolesController(AmbedbContext context,IServicioUsuario servicioUsuario)
+        public RolesController(AmbedbContext context, IServicioUsuario servicioUsuario)
         {
             _context = context;
             _servicioUsuario = servicioUsuario;
@@ -34,8 +34,8 @@ namespace ProyectoAMBE.Controllers
 
         [HttpPost]
         public async Task<ActionResult<Roles>> CrearRoles(Roles roles)
-        {            
-            await _servicioUsuario.CrearRol(roles);           
+        {
+            await _servicioUsuario.CrearRol(roles);
             return Ok();
         }
 

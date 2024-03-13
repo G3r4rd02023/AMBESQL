@@ -18,15 +18,15 @@ namespace ProyectoAMBE.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Bitacora>>> VerBitacora()
         {
-            
+
             if (_context.Bitacora == null)
             {
                 return NotFound();
             }
-            
-            var bitacora = await _context.Bitacora                
+
+            var bitacora = await _context.Bitacora
                 .ToListAsync();
-            
+
             return Ok(bitacora);
         }
 

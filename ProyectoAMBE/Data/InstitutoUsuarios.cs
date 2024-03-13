@@ -8,7 +8,7 @@ public partial class InstitutoUsuarios
 
     public int IdUsuario { get; set; }
 
-    //public virtual Institutos IdInstitutoNavigation { get; set; } = null!;
+    //public virtual Institutos IdInstitutoNavigation { get; set; }
 
-    //public virtual Usuarios IdUsuarioNavigation { get; set; } = null!;
+    //public virtual Usuarios IdUsuarioNavigation { get; set; }
 }

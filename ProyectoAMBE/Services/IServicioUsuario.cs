@@ -8,6 +8,6 @@ namespace ProyectoAMBE.Services
         Task<Usuarios> CrearUsuario(PersonaViewModel model);
 
         Task<Roles> CrearRol(Roles roles);
-       
+
     }
 }
