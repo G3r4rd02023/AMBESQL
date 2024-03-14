@@ -4,15 +4,15 @@ public partial class Contactos
 {
     public int IdContacto { get; set; }
 
-    public int? IdPersona { get; set; }
+    public int IdPersona { get; set; }
 
-    public int? IdInstituto { get; set; }
+    public int IdInstituto { get; set; }
 
     public string Telefono { get; set; }
 
     public string Email { get; set; }
 
-    public int? IdTipoContacto { get; set; }
+    public int IdTipoContacto { get; set; }
 
     public string Direccion { get; set; }
 

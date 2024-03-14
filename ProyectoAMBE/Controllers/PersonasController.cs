@@ -14,20 +14,23 @@ namespace ProyectoAMBE.Controllers
         {
             _context = context;
         }
+        
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Personas>>> ObtenerPersonas()
+        public async Task<ActionResult<IEnumerable<Personas>>> ObtenerPersonas(int idInstituto, int idTipoPersona)
         {
-            //valida que exista la tabla personas
+
             if (_context.Personas == null)
             {
                 return NotFound();
             }
-            //obtiene la lista de todos los personas
-            var personas = await _context.Personas.ToListAsync();
-            //devuelve la lista de todos los institutos
+            var personas = await _context.Personas
+                .Where(p => p.IdTipoPersona == idTipoPersona && p.IdInstituto == idInstituto).ToListAsync();
             return Ok(personas);
         }
+
+       
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Personas>> BuscarPersona(int id)

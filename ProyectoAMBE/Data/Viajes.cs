@@ -4,11 +4,11 @@ public partial class Viajes
 {
     public int IdViaje { get; set; }
 
-    public DateOnly Fecha { get; set; }
+    public DateTime Fecha { get; set; }
 
-    public TimeOnly HoraInicio { get; set; }
+    public string HoraInicio { get; set; }
 
-    public TimeOnly HoraFinal { get; set; }
+    public string HoraFinal { get; set; }
 
     public int IdPersonaConductor { get; set; }
 
