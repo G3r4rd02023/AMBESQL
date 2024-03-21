@@ -38,8 +38,7 @@ namespace ProyectoAMBE.Controllers
                 return NotFound();
             }
 
-            var usuarios = await _context.Usuarios
-                .Where(u => u.Estado == "Nuevo")
+            var usuarios = await _context.Usuarios               
                 .ToListAsync();
             return Ok(usuarios);
         }

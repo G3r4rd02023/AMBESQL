@@ -10,39 +10,47 @@ namespace ProyectoAMBE.Controllers
     public class ObjetosController : ControllerBase
     {
         private readonly AmbedbContext _context;
-        private readonly IServicioBitacora _bitacora;
-
-        public ObjetosController(AmbedbContext context, IServicioBitacora bitacora)
+       
+        public ObjetosController(AmbedbContext context)
         {
-            _context = context;
-            _bitacora = bitacora;
+            _context = context;            
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Objetos>>> ObtenerObjetos()
         {
-            //valida que exista la tabla 
+            
             if (_context.Objetos == null)
             {
                 return NotFound();
             }
-            //obtiene la lista 
+            
             var objeto = await _context.Objetos
                 .ToListAsync();
-            //await _bitacora.AgregarRegistro("Consultó", "Objetos");
-            //devuelve la lista 
+            
             return Ok(objeto);
         }
 
         [HttpPost]
         public async Task<ActionResult<Objetos>> CrearObjetos(Objetos objeto)
-        {
-            //agrega el nuevo objeto a la bd
-            await _context.Objetos.AddAsync(objeto);
-            //guarda los cambios
-            await _context.SaveChangesAsync();
-            //await _bitacora.AgregarRegistro("Creó", "Objetos");
+        {            
+            await _context.Objetos.AddAsync(objeto);            
+            await _context.SaveChangesAsync();            
             return Ok();
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditarObjetos(int id, Objetos objeto)
+        {
+            if (id != objeto.IdObjeto)
+            {
+                return BadRequest();
+            }
+           
+            _context.Entry(objeto).State = EntityState.Modified;                      
+            await _context.SaveChangesAsync();            
+            return Ok();
+        }
+
     }
 }

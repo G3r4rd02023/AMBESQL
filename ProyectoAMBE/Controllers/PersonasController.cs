@@ -17,7 +17,7 @@ namespace ProyectoAMBE.Controllers
         
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Personas>>> ObtenerPersonas(int idInstituto, int idTipoPersona)
+        public async Task<ActionResult<IEnumerable<Personas>>> ObtenerPersonas()
         {
 
             if (_context.Personas == null)
@@ -25,7 +25,7 @@ namespace ProyectoAMBE.Controllers
                 return NotFound();
             }
             var personas = await _context.Personas
-                .Where(p => p.IdTipoPersona == idTipoPersona && p.IdInstituto == idInstituto).ToListAsync();
+               .ToListAsync();
             return Ok(personas);
         }
 
