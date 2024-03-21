@@ -52,5 +52,24 @@ namespace ProyectoAMBE.Controllers
             return Ok();
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> EliminarObjetos(int id)
+        {
+            
+            if (_context.Objetos == null)
+            {
+                return NotFound();
+            }
+            
+            var objeto = await _context.Objetos.FindAsync(id);
+            
+            if (objeto == null)
+            {
+                return NotFound();
+            }           
+            _context.Objetos.Remove(objeto);          
+            await _context.SaveChangesAsync();           
+            return Ok();
+        }
     }
 }
