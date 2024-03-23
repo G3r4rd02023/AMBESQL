@@ -29,7 +29,13 @@ namespace ProyectoAMBE.Controllers
             return Ok(personas);
         }
 
-       
+        [HttpPost]
+        public async Task<ActionResult<Personas>> CrearPersona(Personas persona)
+        {
+            await _context.Personas.AddAsync(persona);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
 
 
         [HttpGet("{id}")]
