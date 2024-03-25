@@ -16,15 +16,15 @@ namespace ProyectoAMBE.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Grados>>> ObtenerGrados(int idInstituto)
+        public async Task<ActionResult<IEnumerable<Grados>>> ObtenerGrados()
         {
             if (_context.Grados == null)
             {
                 return NotFound();
             }
 
-            var grados = await _context.Grados
-                .Where(m => m.IdInstituto == idInstituto)
+            var grados = await _context.Grados                
+                .Where(g => g.Estado == "Activo")
                 .ToListAsync();
             return Ok(grados);
         }
@@ -36,5 +36,40 @@ namespace ProyectoAMBE.Controllers
             await _context.SaveChangesAsync();
             return Ok();
         }
+
+        
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditarGrado(int id, Grados grado)
+        {
+            if (id != grado.IdGrado)
+            {
+                return BadRequest();
+            }
+            
+            _context.Entry(grado).State = EntityState.Modified;                      
+            await _context.SaveChangesAsync();            
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> EliminarGrado(int id)
+        {
+
+            if (_context.Grados == null)
+            {
+                return NotFound();
+            }
+
+            var grado = await _context.Grados.FindAsync(id);
+
+            if (grado == null)
+            {
+                return NotFound();
+            }
+            grado.Estado = "Inactivo";
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
     }
 }
+

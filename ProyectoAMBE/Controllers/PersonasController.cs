@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProyectoAMBE.Data;
+using ProyectoAMBE.Models;
+using ProyectoAMBE.Services;
 
 namespace ProyectoAMBE.Controllers
 {
@@ -9,12 +11,13 @@ namespace ProyectoAMBE.Controllers
     public class PersonasController : ControllerBase
     {
         private readonly AmbedbContext _context;
+       
 
         public PersonasController(AmbedbContext context)
         {
-            _context = context;
+            _context = context;            
         }
-        
+
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Personas>>> ObtenerPersonas()
@@ -37,6 +40,8 @@ namespace ProyectoAMBE.Controllers
             return Ok();
         }
 
+
+        
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Personas>> BuscarPersona(int id)

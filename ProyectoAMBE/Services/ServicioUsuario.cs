@@ -90,5 +90,43 @@ namespace ProyectoAMBE.Services
             return nuevoUsuario;
 
         }
+
+        public async Task<Parentescos> RegistrarAlumno(AlumnoViewModel model)
+        {
+            var nuevoAlumno = new Personas
+            {
+                IdInstituto = model.IdInstituto,
+                IdTipoPersona = model.IdTipoPersona,
+                PrimerNombre = model.PrimerNombre,
+                SegundoNombre = model.SegundoNombre,
+                PrimerApellido = model.PrimerApellido,
+                SegundoApellido = model.SegundoApellido,
+                FechaNacimiento = model.FechaNacimiento,
+                Genero = model.Genero,
+                Estado = model.Estado,
+                CreadoPor = model.CreadoPor,
+                ModificadoPor = model.ModificadoPor
+            };
+
+            await _context.Personas.AddAsync(nuevoAlumno);
+            await _context.SaveChangesAsync();
+
+            var nuevoParentesco = new Parentescos
+            {
+                IdPersonaAlumno = nuevoAlumno.IdPersona,
+                IdPersonaResponsable = model.IdPersonaResponsable,
+                IdInstituto = model.IdInstituto,
+                Parentesco = model.TipoParentesco,               
+                CreadoPor = model.CreadoPor,
+                FechaDeCreacion = model.FechaCreacion,
+                ModificadoPor = model.ModificadoPor,
+                FechaDeModificacion = model.FechaModificacion,
+            };
+
+            await _context.Parentescos.AddAsync(nuevoParentesco);
+            await _context.SaveChangesAsync();
+
+            return nuevoParentesco;
+        }
     }
 }

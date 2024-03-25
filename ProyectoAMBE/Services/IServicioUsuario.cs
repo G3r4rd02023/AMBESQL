@@ -9,5 +9,8 @@ namespace ProyectoAMBE.Services
 
         Task<Roles> CrearRol(Roles roles);
 
+        Task<Parentescos> RegistrarAlumno(AlumnoViewModel model);
+
+
     }
 }

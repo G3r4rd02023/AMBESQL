@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProyectoAMBE.Data;
+using ProyectoAMBE.Models;
+using ProyectoAMBE.Services;
 
 namespace ProyectoAMBE.Controllers
 {
@@ -10,10 +12,12 @@ namespace ProyectoAMBE.Controllers
     public class ParentescosController : ControllerBase
     {
         private readonly AmbedbContext _context;
+        private readonly IServicioUsuario _servicioUsuario;
 
-        public ParentescosController(AmbedbContext context)
+        public ParentescosController(AmbedbContext context, IServicioUsuario servicioUsuario)
         {
             _context = context;
+            _servicioUsuario = servicioUsuario;
         }
 
         [HttpGet]
@@ -31,10 +35,9 @@ namespace ProyectoAMBE.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Parentescos>> CrearParentesco(Parentescos parentesco)
+        public async Task<ActionResult<Parentescos>> RegistrarAlumno(AlumnoViewModel model)
         {
-            await _context.Parentescos.AddAsync(parentesco);
-            await _context.SaveChangesAsync();
+            await _servicioUsuario.RegistrarAlumno(model);
             return Ok();
         }
     }
