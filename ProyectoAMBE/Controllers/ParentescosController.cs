@@ -21,17 +21,16 @@ namespace ProyectoAMBE.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Parentescos>>> ObtenerParentesco(int idPersona)
+        public async Task<ActionResult<IEnumerable<Parentescos>>> ObtenerParentesco()
         {
             if (_context.Parentescos == null)
             {
                 return NotFound();
             }
 
-            var rutas = await _context.Parentescos
-                .Where(p => p.IdPersonaAlumno == idPersona)
+            var parentescos = await _context.Parentescos                
                 .ToListAsync();
-            return Ok(rutas);
+            return Ok(parentescos);
         }
 
         [HttpPost]
