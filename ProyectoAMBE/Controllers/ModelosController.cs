@@ -17,15 +17,14 @@ namespace ProyectoAMBE.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Modelos>>> ObtenerModelos(int idMarca)
+        public async Task<ActionResult<IEnumerable<Modelos>>> ObtenerModelos()
         {
             if (_context.Modelos == null)
             {
                 return NotFound();
             }
 
-            var modelos = await _context.Modelos
-                .Where(m => m.IdMarca == idMarca)
+            var modelos = await _context.Modelos               
                 .ToListAsync();
             return Ok(modelos);
         }
