@@ -134,6 +134,12 @@ public partial class AmbedbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("EMAIL");
+            entity.Property(e => e.Latitud)
+                .HasColumnType("decimal(10, 6)")
+                .HasColumnName("LATITUD");
+            entity.Property(e => e.Longitud)
+               .HasColumnType("decimal(10, 6)")
+               .HasColumnName("LONGITUD");
             entity.Property(e => e.IdInstituto).HasColumnName("ID_INSTITUTO");
             entity.Property(e => e.IdPersona).HasColumnName("ID_PERSONA");
             entity.Property(e => e.IdTipoContacto).HasColumnName("ID_TIPO_CONTACTO");

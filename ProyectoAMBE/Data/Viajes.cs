@@ -9,7 +9,7 @@ public partial class Viajes
     public string HoraInicio { get; set; }
 
     public string HoraFinal { get; set; }
-
+  
     public int IdPersonaConductor { get; set; }
 
     public int IdPersonaNinera { get; set; }
@@ -17,6 +17,8 @@ public partial class Viajes
     public int IdUnidad { get; set; }
 
     public int IdInstituto { get; set; }
+
+    public int IdTipoViaje { get; set; }
 
     public string Comentarios { get; set; }
 

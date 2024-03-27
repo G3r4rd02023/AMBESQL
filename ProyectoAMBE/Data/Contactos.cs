@@ -23,6 +23,9 @@ public partial class Contactos
     public string Calle { get; set; }
 
     public string Casa { get; set; }
+    public decimal Latitud { get; set; }
+    public decimal Longitud { get; set; }
+
 
     //public virtual Institutos IdInstitutoNavigation { get; set; }
 
