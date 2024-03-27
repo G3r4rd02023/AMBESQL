@@ -17,15 +17,14 @@ namespace ProyectoAMBE.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Viajes>>> ObtenerViajes(int idInstituto)
+        public async Task<ActionResult<IEnumerable<Viajes>>> ObtenerViajes()
         {
             if (_context.Viajes == null)
             {
                 return NotFound();
             }
 
-            var viajes = await _context.Viajes
-                .Where(m => m.IdInstituto == idInstituto)
+            var viajes = await _context.Viajes               
                 .ToListAsync();
             return Ok(viajes);
         }

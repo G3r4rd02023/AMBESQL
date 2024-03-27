@@ -1091,6 +1091,7 @@ public partial class AmbedbContext : DbContext
             entity.Property(e => e.IdPersonaConductor).HasColumnName("ID_PERSONA_CONDUCTOR");
             entity.Property(e => e.IdPersonaNinera).HasColumnName("ID_PERSONA_NINERA");
             entity.Property(e => e.IdUnidad).HasColumnName("ID_UNIDAD");
+            entity.Property(e => e.IdTipoViaje).HasColumnName("ID_TIPO_VIAJE");
             entity.Property(e => e.ModificadoPor)
                 .HasMaxLength(100)
                 .IsUnicode(false)
